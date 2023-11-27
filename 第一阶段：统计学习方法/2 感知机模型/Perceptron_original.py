@@ -1,41 +1,51 @@
 '''
-代码来源：https://zhuanlan.zhihu.com/p/483594654
+代码参考：https://zhuanlan.zhihu.com/p/483594654
+
+新增感知机算法原始形式代码，例题2.1
 '''
 
 import numpy as np
 
-# 定义感知机模型类
-class Perceptorn:
-    def __init__(self):
-        self.w = None
-        self.b = 0
-        self.l_late = 1
+class perceptron:
+    def __init__(self, w, b, lr):
+        self.w = w
+        self.b = b
+        self.lr = lr
 
-    # 算法主函数
-    def fit(self, x_trian, y_trian):
-        self.w = np.zeros(x_trian.shape[1])
+    def fit(self, x_train, y_train):
         i = 0
-
-        while i < x_trian.shape[0]:
-            x = x_trian[i]
-            y = y_trian[i]
-            # 判断其所以点是否都没有误分类，如有更新w,b,重新判断
+        iter = 1
+        while i < x_train.shape[0]:
+            x = x_train[i]
+            y = y_train[i]
             if y * (np.dot(self.w, x) + self.b) <= 0:
-                self.w = self.w + self.l_late * np.dot(x, y)
-                self.b = self.b + self.l_late * y
+                self.w = self.w + self.lr * np.dot(x, y)
+                self.b = self.b + self.lr * y
+                print(f'iter={iter}, x=x[{i+1}], w={self.w}, b={self.b}')
                 i = 0
+                iter += 1
             else:
                 i += 1
 
+    def fit2(self, x_train, y_train):
+        i = 0
+        iter = 1
+        while i < x_train.shape[0]:
+            if  y_train[i] * (np.dot(self.w, x_train[i]) + self.b) <= 0:
+                self.w = self.w + self.lr * np.dot(x_train[i], y_train[i])
+                self.b = self.b + self.lr * y_train[i]
+                print(f'iter={iter}, x=x[{i+1}], w={self.w}, b={self.b}')
+                i = 0
+                iter += 1
+            else:
+                i += 1
 
-# 训练集
-x_trian = np.array([[3, 3], [4, 3], [1, 1]])
-
-y_trian = np.array([1, 1, -1])
-
-# # 调用
-perceptorn = Perceptorn()
-perceptorn.fit(x_trian, y_trian)
-
-# 输出结果
-print(perceptorn.w, perceptorn.b)
+if __name__=='__main__':
+    x_train = np.array([[3,3],[4,3],[1,1]])
+    y_train = np.array([1,1,-1])
+    w0 = np.zeros(x_train.shape[1])
+    b0 = 0
+    lr = 1
+    perceptron = perceptron(w=w0, b=b0, lr=lr)
+    perceptron.fit2(x_train=x_train, y_train=y_train)
+    print(f'final w={perceptron.w}, b={perceptron.b}')
