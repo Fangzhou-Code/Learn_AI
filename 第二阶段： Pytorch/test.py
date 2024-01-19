@@ -41,6 +41,16 @@ if flag:
     print("修改后tensor:",t)
     print(id(t), id(arr), id(t) == id(arr))
 
+    print('numpy 和torch互相转换2')
+    a = np.array([1, 2, 3], dtype=np.float32)
+    b = torch.Tensor(a)
+    b[0] = 999
+    print('共享内存' if a[0] == b[0] else '不共享内存')
+    print(id(a),id(b),id(a)==id(b))
+
+
+
+
 #===== 3. torch.zeros(),torch.zeros_like()创建张量 =====
 # flag = True
 flag = False
