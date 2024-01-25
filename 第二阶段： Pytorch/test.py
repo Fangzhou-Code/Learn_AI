@@ -29,8 +29,8 @@ if flag:
     print("修改后tensor:", t)
 
 #===== 2.  创建tensor，共享内存 =====
-flag = True
-# flag = False
+# flag = True
+flag = False
 if flag:
     arr = np.ones((3, 3))
     t = torch.from_numpy(arr)
@@ -39,14 +39,17 @@ if flag:
     t[0,0] = 0
     print("修改后numpy array:", arr)
     print("修改后tensor:",t)
-    print(id(t), id(arr), id(t) == id(arr))
+    print('共享内存' if arr[0,0] == t[0,0] else '不共享内存')
+    print(t.data,t.type,t.shape,t.device,t.requires_grad,t.grad,t.grad_fn,t.is_leaf)
+    print(id(t.data), id(arr.data), id(t.data) == id(arr.data ))
 
-    print('numpy 和torch互相转换2')
-    a = np.array([1, 2, 3], dtype=np.float32)
-    b = torch.Tensor(a)
-    b[0] = 999
-    print('共享内存' if a[0] == b[0] else '不共享内存')
-    print(id(a),id(b),id(a)==id(b))
+
+    # print('numpy 和torch互相转换2')
+    # a = np.array([1, 2, 3], dtype=np.float32)
+    # b = torch.Tensor(a)
+    # b[0] = 999
+    # print('共享内存' if a[0] == b[0] else '不共享内存')
+    # print(id(a), id(b), id(a.data) == id(b.data))
 
 
 
@@ -92,3 +95,24 @@ if flag:
     t_normal = torch.normal(mean,std)
     print("maen:{}\nstd:{}".format(mean,std))
     print(t_normal)
+
+
+
+# 计算图
+flag = True
+# flag = False
+if flag:
+    x = torch.tensor([2.], requires_grad=True)
+    print(x)
+    w = torch.tensor([1.],requires_grad=True)
+    print(w)
+    a = torch.add(x,w)
+    a.retain_grad()
+    b = torch.add(w,1)
+    y = torch.mul(a,b)
+    y.backward()
+    print(w.is_leaf,x.is_leaf,a.is_leaf,b.is_leaf,y.is_leaf)
+    print(w.grad,x.grad,a.grad,b.grad,y.grad_fn)
+
+
+
