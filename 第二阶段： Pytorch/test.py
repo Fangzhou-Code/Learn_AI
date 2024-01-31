@@ -99,8 +99,8 @@ if flag:
 
 
 # 计算图
-flag = True
-# flag = False
+# flag = True
+flag = False
 if flag:
     x = torch.tensor([2.], requires_grad=True)
     print(x)
@@ -115,4 +115,16 @@ if flag:
     print(w.grad,x.grad,a.grad,b.grad,y.grad_fn)
 
 
-
+# nn.Linear
+flag = True
+# flag = False
+if flag:
+    from torch import  nn
+    model = nn.Linear(10,5)
+    input = torch.rand([20,10])
+    print('input={}'.format(input))
+    output = model(input)
+    print('output={}'.format(output))
+    # for param in model.parameters():
+    #     print(param)
+    print(model.weight)

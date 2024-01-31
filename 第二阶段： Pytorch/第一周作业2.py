@@ -2,7 +2,16 @@ import torch
 import matplotlib.pyplot as plt
 torch.manual_seed(10)
 '''
-调整线性回归模型停止条件以及y=3*x+(5 + torch.randn(200，1))中的斜率，训练一个线性回归模型
+题目：调整线性回归模型停止条件以及y=3*x+(5 + torch.randn(200，1))中的斜率，训练一个线性回归模型
+
+思路：
+1. 生成数据
+2. 选择模型：这里是自己构造的线性模型
+3. 选择loss
+4. 选择优化器
+5. 训练模型
+    * 前向传播-计算loss
+    * loss-反向传播
 '''
 # 1. 生成数据
 x = torch.rand(200,1) * 10
