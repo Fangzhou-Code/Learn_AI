@@ -77,8 +77,8 @@ for iter in range(100):
         plt.text(torch.min(x1[:,0])-5, torch.max(x0[:,-1])-5, 'Loss=$.4f' % loss.data.numpy(), fontdict={'size':20,'color':'red'})
         plt.title("Iteration:{}\n w0:{:.2f} b={:.2f} accuracy:{:.2%}".format(iter, w0, w1, plot_b, acc))
         plt.legend()
-        plt.show()
-        plt.pause(0.5)
+        # plt.show()
+        # plt.pause(0.5)
         if acc > 0.99:
             break
 

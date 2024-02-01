@@ -34,8 +34,21 @@ print(id(a),id(b),id(a)==id(b))
 * 选择优化器
 * 模型训练
 
-## 数据模块
+## 数据模块 
 * 数据收集
 * 数据划分
 * 数据读取
 * 数据预处理
+
+### 数据读取 DataLoader
+
+```mermaid
+flowchart LR;
+	test((数据读取))
+	test===1.读哪些数据?-->Sampler输出的index
+	test===2.从哪读数据?-->Dataset中的data_dir
+	test===3.怎么读数据?-->Dataset中的getitem
+```
+
+![img.png](img.png)
+
