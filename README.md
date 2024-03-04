@@ -13,10 +13,17 @@
 * 视频2：[刘二大人](https://www.bilibili.com/video/BV1Y7411d7Ys/?p=4&spm_id_from=pageDriver&vd_source=7c6331529905f510653a7c04e37bd902)
 * 视频3：[小土堆](https://www.bilibili.com/video/BV1hE411t7RN/?spm_id_from=333.337.search-card.all.click&vd_source=7c6331529905f510653a7c04e37bd902)
 * 文档：[官方文档](https://pytorch.org/docs/stable/index.html)
+* 笔记：[笔记](第二阶段：%20Pytorch/notes.md)
 
 ## 第三阶段：强化学习（可有可无）
 **Notice**：因本人科研需要进行学习
 * 资料（文档+视频）：[动手学强化学习](https://hrl.boyuai.com/)
 * 视频: [强化学习数学基础](https://www.bilibili.com/video/BV1sd4y167NS/?p=7&share_source=copy_web&vd_source=a1ffec068250da5848b9cace6cbe7870)
 
-## 第四阶段: transformer
+## 第四阶段: 大模型
+* 视频：[清华NLP | 刘知远团队大模型公开课全网首发｜带你从入门到实战](https://www.bilibili.com/video/BV1UG411p7zv/?p=13&share_source=copy_web&vd_source=a1ffec068250da5848b9cace6cbe7870)
+* 笔记：[大模型](第四阶段：大模型/LLM.md)
+
+## 第五阶段：分布式机器学习
+* 视频：[分布式并行](https://www.bilibili.com/video/BV1te4y1e7vz/?spm_id_from=333.788&vd_source=7c6331529905f510653a7c04e37bd902)
+* 资料：[AI](https://github.com/chenzomi12/DeepLearningSystem)
